@@ -8,9 +8,9 @@
                 "text" => $_GET["text"]);
 
   // 確認用に表示
-  print $data["name"].'<br>';
-  print $data["price"].'<br>';
-  print "<IMG SRC = ".$data["photo"].">".'<br>';
+  print $data["name"]."<br>";
+  print $data["price"]."<br>";
+  print "<IMG SRC = ".$data["photo"].">"."<br>";
   print $data["text"];
 ?>
 </p>
