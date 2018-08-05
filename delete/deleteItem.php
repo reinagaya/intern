@@ -3,8 +3,6 @@
 // DBとの接続用
 require_once("./../connect/connectDB.php");
 
-define('package', "shop1");
-
 // データが送られてきたか判定
 // 送られてきたデータがid以外，またはGETにデータがなければexit
 if (!isset($_GET["id"]) || empty($_GET)) {

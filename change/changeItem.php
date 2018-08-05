@@ -3,9 +3,6 @@
 // DBとの接続用
 require_once("./../connect/connectDB.php");
 
-// パッケージ名
-define('package', "shop1");
-
 // データが送られてきたか判定
 // GETにデータがなければexit
 if (empty($_GET)) {
