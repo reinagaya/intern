@@ -6,9 +6,9 @@ require_once("./../connect/connectDB.php");
 define('package', "shop1");
 
 // データが送られてきたか判定
-// GETにデータがなければexit
-if (empty($_GET)) {
-  print "配列が空です";
+// 送られてきたデータがid以外，またはGETにデータがなければexit
+if (!isset($_GET["id"]) || empty($_GET)) {
+  print "データがありません。";
   exit;
 }
 
