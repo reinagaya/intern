@@ -3,13 +3,10 @@
 // DBとの接続用
 require_once("./../connect/connectDB.php");
 
-// パッケージ名
-define('package', "shop1");
-
 // データが送られてきたか判定
-// GETにデータがなければexit
-if (empty($_GET)) {
-  print "配列が空です";
+// 送られてきたデータがname以外，またはGETにデータがなければexit
+if (!isset($_GET["name"]) || empty($_GET)) {
+  print "データがありません。";
   exit;
 }
 
@@ -38,14 +35,8 @@ if ($count === 0) {
     exit;
 }
 
-// 取得した各商品のid
-$ids;
-
 // 取得した各商品のデータを連想配列に代入
 while($arr_item = mysqli_fetch_assoc($result)) {
-    // idを保存しておく
-    $ids[] = $arr_item["id"];
-
     // jsonを連想配列に変換
     $data = json_decode($arr_item["item"], true);
 

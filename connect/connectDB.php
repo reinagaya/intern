@@ -7,6 +7,9 @@ define('User', "root");
 define('Passwd', "pcgz505dx");
 define('DBname', "products");
 
+// パッケージ名
+define('package', "shop1");
+
 // 接続時のオブジェクト用変数
 $link;
 
