@@ -17,13 +17,13 @@ function connect() {
 
     // すでに接続されているときは抜ける
     if (!$GLOBALS["isConnected"]) {
-        // 接続
+    // 接続
         $GLOBALS['link'] = mysqli_connect(Host, User, Passwd, DBname);
     } else {
         print "接続済み" . "<br>";
         return;
     }
-    
+
     // 接続に失敗したら，エラーメッセージを表示
     if (!$GLOBALS['link']) {
         print "データベース接続失敗" . "<br>";
@@ -31,7 +31,7 @@ function connect() {
         print "error: " . mysqli_connect_error() . "<br>";
         exit;
     }
-    
+
     // 接続成功
     $GLOBALS["isConnected"] = true;
     print "データベース接続成功" . "<br>";

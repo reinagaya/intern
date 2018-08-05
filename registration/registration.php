@@ -2,6 +2,10 @@
 <br>
 <?php
 
+require_once('./../connect/connectDB.php');
+
+define('package', "shop1");
+
 // データが送られてきたか判定
 // GETにデータがなければexit
 if (empty($_GET)) {
@@ -35,7 +39,27 @@ $data = array("name" => $_GET["name"],
 print $data["name"]."<br>";
 print $data["price"]."<br>";
 print "<IMG SRC = ".$data["photo"].">"."<br>";
-print $data["text"];
-  
+print $data["text"]."<br>";
+print "です。"
+
+// 配列をjsonに変換
+$json_data = json_encode($data);
+
+// DBに接続
+connect();
+
+// jsonデータをテーブルに挿入
+$query = "insert into " . package . " values ('$json_data')";
+$result = mysqli_query($link, $query);
+
+// 接続を切る
+cut();
+
+// 送信が失敗したらエラーメッセージを表示
+if (!$result) {
+  print "データの送信に失敗しました。"
+  exit;
+}
+
 ?>
 </p>
