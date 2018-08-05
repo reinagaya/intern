@@ -9,7 +9,7 @@ define('package', "shop1");
 // データが送られてきたか判定
 // GETにデータがなければexit
 if (empty($_GET)) {
-    print "配列が空です";
+    print "データがありません。";
     exit;
 } else {
     // カウンター
@@ -23,8 +23,8 @@ if (empty($_GET)) {
     }
 
     // 要素が不足していたらexit
-    if ($count < 4) {
-        print "データが不足しています";
+    if ($count < 5) {
+        print "データが不足しています。";
         exit;
     }
 }
@@ -59,7 +59,7 @@ if (!$result) {
 
 if ($count === 0) {
     // 変更した行数が0なら，変更はない
-    print "指定された商品はすでに変更されています。";
+    print "指定された商品はすでに変更されているか，存在しません。";
 } else {
     print "データを変更しました。";
 }
