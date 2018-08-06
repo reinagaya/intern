@@ -5,7 +5,7 @@ require_once("./../connect/connectDB.php");
 
 // データが送られてきたか判定
 // 送られてきたデータがname以外，またはGETにデータがなければexit
-if (!isset($_POST["name"]) || empty($_POST)) {
+if (!isset($_POST["name"]) || $_POST == "") {
   print "データがありません。";
   exit;
 }
