@@ -10,30 +10,42 @@ if (empty($_GET)) {
     exit;
 } else {
     // カウンター
-    $count = 0;
+    $counter = 0;
 
-    // GETに要素がいくつ入っているかカウント
-    foreach($_GET as $value) {
-        if (isset($value)) {
-            $count++;
-        }
+    // POSTに要素がいくつ入っているかカウント
+    foreach($_POST as $value) {
+        if (strlen($value) != 0) $counter++;
     }
 
+    if (isset($_FILES)) $counter++;
+
     // 要素が不足していたらexit
-    if ($count < 5) {
+    if ($counter < 4) {
         print "データが不足しています。";
         exit;
     }
 }
 
-// 送られてきたデータを連想配列に格納
-$data = array("name" => $_GET["name"],
-              "price" => $_GET["price"],
-              "photo" => $_GET["photo"],
-              "text" => $_GET["text"]);
+// 送られてきた画像ファイルをローカルに保存する
+$ima = $_FILES["photo"];
+$fn = "./../photos/" . $ima["name"];
+move_uploaded_file($ima["tmp_name"], $fn);
 
-// 配列をjsonに変換
-$json_data = json_encode($data);
+// 送られてきたデータを連想配列に格納
+$data = array("name" => $_POST["name"],
+              "price" => $_POST["price"],
+              "photo" => $fn,
+              "text" => $_POST["text"]);
+
+// 確認用に表示
+print $data["name"]."<br>";
+print $data["price"]."<br>";
+print "<IMG SRC = ".$fn.">"."<br>";
+print $data["text"]."<br>";
+print "です。";
+
+// 配列をjsonに変換 文字コードをUTF-8に設定
+$json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 // DBに接続
 connect();

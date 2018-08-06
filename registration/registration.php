@@ -16,7 +16,7 @@ if (empty($_POST)) {
 
   // POSTに要素がいくつ入っているかカウント
   foreach($_POST as $value) {
-    if (!strlen($value)) $count++;
+    if (strlen($value) != 0) $count++;
   }
 
   if (isset($_FILES)) $count++;
@@ -46,8 +46,8 @@ print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
 print "です。";
 
-// 配列をjsonに変換
-$json_data = json_encode($data);
+// 配列をjsonに変換 文字コードをUTF-8に設定
+$json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 // DBに接続
 connect();
@@ -66,4 +66,3 @@ if (!$result) {
 }
 
 ?>
-</p>

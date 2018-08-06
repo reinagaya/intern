@@ -45,6 +45,10 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     print $data["price"]."<br>";
     print "<IMG SRC = ".$data["photo"].">"."<br>";
     print $data["text"]."<br>";
+
+    // 変更と削除用のボタンを表示
+    print "<input type = 'button' onClick = 'location.href=\"./../Change/changeItem.html\"' value='更新'>";
+    print "<input type = 'button' onClick = 'location.href=\"./../Delete/deleteItem.php\"' value='削除'><br>";
     print "<br>";
 }
  
