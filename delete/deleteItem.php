@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  charset="UTF-8">
+    <title>削除完了</title>
+  </head>
+  <body>
 <?php
 
 // DBとの接続用
@@ -6,7 +13,7 @@ require_once("./../connect/connectDB.php");
 // データが送られてきたか判定
 // 送られてきたデータがid以外，またはGETにデータがなければexit
 if (!isset($_POST["id"]) || empty($_POST)) {
-  print "データがありません。";
+  print "データがありません。<br>";
   exit;
 }
 
@@ -25,15 +32,18 @@ cut();
 
 if (!$result) {  
     // 削除が失敗したらエラーメッセージを表示
-    print "データの削除に失敗しました。";
+    print "データの削除に失敗しました。<br>";
     exit;
 }
 
 if ($count === 0) {
     // データがない場合は通知
-    print "該当するデータはありません。";
+    print "該当するデータはありません。<br>";
 } else if ($count > 0) {
-    print "データは削除されました。";
+    print "データは削除されました。<br>";
 }
  
 ?>
+<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+</body>
+</html>

@@ -65,9 +65,10 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     print "</form>";
 
     // print "<input type = 'button' onClick = 'location.href=\"./../Delete/deleteItem.php\"' value='削除'>";
-    print "<br><br>";
+    print "<br>";
 }
  
 ?>
+<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
 </body>
 </html>

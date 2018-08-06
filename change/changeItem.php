@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  charset="UTF-8">
+    <title>変更完了</title>
+  </head>
 <?php
 
 // DBとの接続用
@@ -6,7 +12,7 @@ require_once("./../connect/connectDB.php");
 // データが送られてきたか判定
 // GETにデータがなければexit
 if (empty($_POST)) {
-    print "データがありません。";
+    print "データがありません。<br>";
     exit;
 } else {
     // カウンター
@@ -21,7 +27,7 @@ if (empty($_POST)) {
 
     // 要素が不足していたらexit
     if ($counter < 4) {
-        print "データが不足しています。";
+        print "データが不足しています。<br>";
         exit;
     }
 }
@@ -69,15 +75,18 @@ cut();
 
 if (!$result) {  
     // 変更が失敗したらエラーメッセージを表示
-    print "データの変更に失敗しました。";
+    print "データの変更に失敗しました。<br>";
     exit;
 }
 
 if ($count === 0) {
     // 変更した行数が0なら，変更はない
-    print "指定された商品はすでに変更されているか，存在しません。";
+    print "指定された商品はすでに変更されているか，存在しません。<br>";
 } else {
-    print "データを変更しました。";
+    print "データを変更しました。<br>";
 }
 
 ?>
+<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+</body>
+</html>

@@ -1,4 +1,11 @@
-<p>あなたの登録した商品は，
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  charset="UTF-8">
+    <title>登録完了</title>
+  </head>
+  <body>
+    あなたの登録した商品は，
 <br>
 <?php
 
@@ -8,7 +15,7 @@ require_once('./../connect/connectDB.php');
 // データが送られてきたか判定
 // POSTにデータがなければexit
 if (empty($_POST)) {
-  print "データがありません。";
+  print "データがありません。<br>";
   exit;
 } else {
   // カウンター
@@ -23,7 +30,7 @@ if (empty($_POST)) {
 
   // 要素が不足していたらexit
   if ($count < 3) {
-    print "データが不足しています。";
+    print "データが不足しています。<br>";
     exit;
   }
 }
@@ -61,8 +68,11 @@ cut();
 
 // 送信が失敗したらエラーメッセージを表示
 if (!$result) {
-  print "データの送信に失敗しました。";
+  print "データの送信に失敗しました。<br>";
   exit;
 }
 
 ?>
+<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+</body>
+</html>
