@@ -37,7 +37,7 @@ function connect() {
 
     // 接続成功
     $GLOBALS["isConnected"] = true;
-    print "データベース接続成功" . "<br>";
+    // print "データベース接続成功" . "<br>";
 }
 
 function cut() {
@@ -50,7 +50,7 @@ function cut() {
 
         // 切断できたか確認
         if (!$GLOBALS["isConnected"]) {
-            print "データベース切断成功" . "<br>";
+            // print "データベース切断成功" . "<br>";
         } else {
             print "データベース接続失敗" . "<br>";
         }
