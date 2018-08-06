@@ -5,7 +5,7 @@ require_once("./../connect/connectDB.php");
 
 // データが送られてきたか判定
 // 送られてきたデータがname以外，またはGETにデータがなければexit
-if (!isset($_GET["name"]) || empty($_GET)) {
+if (!isset($_POST["name"]) || empty($_POST)) {
   print "データがありません。";
   exit;
 }
@@ -14,7 +14,7 @@ if (!isset($_GET["name"]) || empty($_GET)) {
 connect();
 
 // 送られた文字列を含む商品を取得
-$query = "select * from " . package . " where json_extract(item, '$.name') like '%" . $_GET["name"] . "%'";
+$query = "select * from " . package . " where json_extract(item, '$.name') like '%" . $_POST["name"] . "%'";
 $result = mysqli_query($link, $query);
 
 // 取得されたデータの数
