@@ -7,11 +7,12 @@
   <body>
       <!-- 画像ファイルを送るので，enctype = "multipart/form-data"を設定 -->
       <form action = "./registration.php" method = "post" enctype = "multipart/form-data">
-        商品名　<input type = "text" name = "name"><br>
-        画像　　<input type = "file" name = "photo"><br>
-        値段　　<input type = "number" name = "price"><br>
+        <!-- 情報を入力 説明文以外は入力必須 -->
+        商品名　<input type = "text" name = "name" required><br>
+        画像　　<input type = "file" name = "photo" required><br>
+        値段　　<input type = "number" name = "price" ><br>
         <!-- 説明文を入れるためのtextarea 100文字まで -->
-        <textarea name = "text" rows = "5" cols = "20" maxlength = "100">説明文</textarea><br>
+        <textarea name = "text" rows = "10" cols = "40" maxlength = "100" placeholder = "説明文"></textarea><br>
         <br>
         <input type = "submit" value = "登録">
         <br>

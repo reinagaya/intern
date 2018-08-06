@@ -6,20 +6,20 @@
 require_once('./../connect/connectDB.php');
 
 // データが送られてきたか判定
-// GETにデータがなければexit
-if (empty($_GET)) {
+// POSTにデータがなければexit
+if (empty($_POST)) {
   print "データがありません。";
   exit;
 } else {
   // カウンター
   $count = 0;
 
-  // GETに要素がいくつ入っているかカウント
-  foreach($_GET as $value) {
-    if (isset($value)) {
-      $count++;
-    }
+  // POSTに要素がいくつ入っているかカウント
+  foreach($_POST as $value) {
+    if (!strlen($value)) $count++;
   }
+
+  if (isset($_FILES)) $count++;
 
   // 要素が不足していたらexit
   if ($count < 4) {
@@ -28,16 +28,21 @@ if (empty($_GET)) {
   }
 }
 
+// 送られてきた画像ファイルをローカルに保存する
+$ima = $_FILES["photo"];
+$fn = "./../photos/" . $ima["name"];
+move_uploaded_file($ima["tmp_name"], $fn);
+
 // 送られてきたデータを連想配列に格納
-$data = array("name" => $_GET["name"],
-              "price" => $_GET["price"],
-              "photo" => $_GET["photo"],
-              "text" => $_GET["text"]);
+$data = array("name" => $_POST["name"],
+              "price" => $_POST["price"],
+              "photo" => $fn,
+              "text" => $_POST["text"]);
 
 // 確認用に表示
 print $data["name"]."<br>";
 print $data["price"]."<br>";
-print "<IMG SRC = ".$data["photo"].">"."<br>";
+print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
 print "です。";
 
