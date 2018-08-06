@@ -5,7 +5,7 @@ require_once("./../connect/connectDB.php");
 
 // データが送られてきたか判定
 // GETにデータがなければexit
-if (empty($_GET)) {
+if (empty($_POST)) {
     print "データがありません。";
     exit;
 } else {
@@ -13,7 +13,7 @@ if (empty($_GET)) {
     $counter = 0;
 
     // POSTに要素がいくつ入っているかカウント
-    foreach($_POST as $value) {
+    foreach($_POST as $key => $value) {
         if (strlen($value) != 0) $counter++;
     }
 
@@ -27,9 +27,16 @@ if (empty($_GET)) {
 }
 
 // 送られてきた画像ファイルをローカルに保存する
-$ima = $_FILES["photo"];
-$fn = "./../photos/" . $ima["name"];
-move_uploaded_file($ima["tmp_name"], $fn);
+$fn;
+if (empty($_FILES)) {
+    $ima = $_FILES["photo"];
+    print $ima["name"];
+    $fn = "./../photos/" . $ima["name"];
+    move_uploaded_file($ima["tmp_name"], $fn);
+} else {
+    // 変更されていない場合は元のデータを移す
+    $fn = $_POST["photo"];
+}
 
 // 送られてきたデータを連想配列に格納
 $data = array("name" => $_POST["name"],
@@ -42,7 +49,7 @@ print $data["name"]."<br>";
 print $data["price"]."<br>";
 print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
-print "です。";
+print "です。<br>";
 
 // 配列をjsonに変換 文字コードをUTF-8に設定
 $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -51,7 +58,7 @@ $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 connect();
 
 // 送られたidの商品を書き換える
-$query = "update " . package . " set item = '" . $json_data . "' where id = ". $_GET["id"];
+$query = "update " . package . " set item = '" . $json_data . "' where id = ". $_POST["id"];
 $result = mysqli_query($link, $query);
 
 // 変更されたデータの数

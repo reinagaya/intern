@@ -3,9 +3,11 @@
 // DBとの接続用
 require_once("./../connect/connectDB.php");
 
+print $_POST["id"];
+
 // データが送られてきたか判定
 // 送られてきたデータがid以外，またはGETにデータがなければexit
-if (!isset($_GET["id"]) || empty($_GET)) {
+if (!isset($_POST["id"]) || empty($_POST)) {
   print "データがありません。";
   exit;
 }
@@ -14,7 +16,7 @@ if (!isset($_GET["id"]) || empty($_GET)) {
 connect();
 
 // 送られたidの商品を削除
-$query = "delete from " . package . " where id = ". $_GET["id"];
+$query = "delete from " . package . " where id = ". $_POST["id"];
 $result = mysqli_query($link, $query);
 
 // 削除されたデータの数

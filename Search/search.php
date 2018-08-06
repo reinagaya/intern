@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>検索結果</title>
+  </head>
+  <body>
 <?php
 
 // DBとの接続用
@@ -47,9 +54,20 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     print $data["text"]."<br>";
 
     // 変更と削除用のボタンを表示
-    print "<input type = 'button' onClick = 'location.href=\"./../Change/changeItem.html\"' value='更新'>";
-    print "<input type = 'button' onClick = 'location.href=\"./../Delete/deleteItem.php\"' value='削除'><br>";
-    print "<br>";
+    // print "<input type = 'button' onClick = 'location.href=\"./../Change/changeItem.html\"' value='更新'>";
+    print "<form action='./../Change/inputForm.php' method='POST'>";
+    print "<input type='hidden' name='item' value='". $arr_item["item"] ."'>";
+    print "<input type='hidden' name='id' value ='". $arr_item["id"] ."'><input type='submit' value='変更'>";
+    print "</form>";
+
+    print "<form action='./../Delete/deleteItem.php' method='POST'>";
+    print "<input type='hidden' name='id' value ='". $arr_item["id"] ."'><input type='submit' value='削除'>";
+    print "</form>";
+
+    // print "<input type = 'button' onClick = 'location.href=\"./../Delete/deleteItem.php\"' value='削除'>";
+    print "<br><br>";
 }
  
 ?>
+</body>
+</html>
