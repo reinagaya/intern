@@ -3,8 +3,6 @@
 // DBとの接続用
 require_once("./../connect/connectDB.php");
 
-print $_POST["id"];
-
 // データが送られてきたか判定
 // 送られてきたデータがid以外，またはGETにデータがなければexit
 if (!isset($_POST["id"]) || empty($_POST)) {

@@ -22,7 +22,7 @@ if (empty($_POST)) {
   if (isset($_FILES)) $count++;
 
   // 要素が不足していたらexit
-  if ($count < 4) {
+  if ($count < 3) {
     print "データが不足しています。";
     exit;
   }
@@ -44,7 +44,7 @@ print $data["name"]."<br>";
 print $data["price"]."<br>";
 print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
-print "です。";
+print "です。<br>";
 
 // 配列をjsonに変換 文字コードをUTF-8に設定
 $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
