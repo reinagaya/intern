@@ -10,7 +10,7 @@
 <?php
 
 // データベースに接続
-require_once('./../connect/connectDB.php');
+require_once('./../Connect/connectDB.php');
 
 // データが送られてきたか判定
 // POSTにデータがなければexit

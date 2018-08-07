@@ -8,7 +8,7 @@
 <?php
 
 // DBとの接続用
-require_once("./../connect/connectDB.php");
+require_once("./../Connect/connectDB.php");
 
 // データが送られてきたか判定
 // 送られてきたデータがname以外，またはGETにデータがなければexit
