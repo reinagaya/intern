@@ -33,7 +33,7 @@ print "<textarea name='text' rows='10' cols='40' maxlength='100'>". $data["text"
 print "<input type='hidden' name='id' value='". $_POST["id"] ."'><br>";
 
 ?>
-            <input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+            <input type = "button" onClick = "location.href='./../index.php'" value="戻る">
             <input type = "submit" value = "変更">
             <br>
         </form>

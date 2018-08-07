@@ -29,7 +29,7 @@ if (empty($_POST)) {
   if (isset($_FILES)) $count++;
 
   // 要素が不足していたらexit
-  if ($count < 3) {
+  if ($count < 4) {
     print "データが不足しています。<br>";
     exit;
   }
@@ -47,8 +47,9 @@ $data = array("name" => $_POST["name"],
               "text" => $_POST["text"]);
 
 // 確認用に表示
+print $_POST["shop"]."<br>";
 print $data["name"]."<br>";
-print $data["price"]."<br>";
+print $data["price"]."円<br>";
 print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
 print "です。<br>";
@@ -60,7 +61,7 @@ $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 connect();
 
 // jsonデータをテーブルに挿入
-$query = "insert into " . package . " set item = '$json_data'";
+$query = "insert into " . package . " set item = '$json_data', shop = '" . $_POST["shop"] . "'";
 $result = mysqli_query($link, $query);
 
 // 接続を切る
@@ -73,6 +74,6 @@ if (!$result) {
 }
 
 ?>
-<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+<input type = "button" onClick = "location.href='./../index.php'" value="戻る">
 </body>
 </html>

@@ -44,6 +44,6 @@ if ($count === 0) {
 }
  
 ?>
-<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+<input type = "button" onClick = "location.href='./../index.php'" value="戻る">
 </body>
 </html>

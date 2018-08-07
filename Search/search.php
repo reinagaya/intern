@@ -69,6 +69,6 @@ while($arr_item = mysqli_fetch_assoc($result)) {
 }
  
 ?>
-<input type = "button" onClick = "location.href='./../index.html'" value="戻る">
+<input type = "button" onClick = "location.href='./../index.php'" value="戻る">
 </body>
 </html>
