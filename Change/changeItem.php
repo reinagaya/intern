@@ -67,7 +67,6 @@ connect();
 // 送られたidの商品を書き換える
 $query = "update " . package . " set item = '" . $json_data . "', shop = '". $_POST["shop"] ."' where id = ". $_POST["id"];
 $result = mysqli_query($link, $query);
-print $query;
 
 // 変更されたデータの数
 $count = mysqli_affected_rows($link);
