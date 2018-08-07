@@ -22,6 +22,9 @@ connect();
 
 // 送られた文字列を含む商品を取得
 $query = "select * from " . package . " where json_extract(item, '$.name') like '%" . $_POST["name"] . "%'";
+if ($_POST["shop"] !== "all") {
+  $query .= " and shop = '" . $_POST["shop"] . "'";
+}
 $result = mysqli_query($link, $query);
 
 // 取得されたデータの数
@@ -48,10 +51,12 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     $data = json_decode($arr_item["item"], true);
 
     // 商品情報を表示
+    print $arr_item["shop"]."<br>";
     print $data["name"]."<br>";
-    print $data["price"]."<br>";
+    print $data["price"]."円<br>";
     print "<IMG SRC = ".$data["photo"].">"."<br>";
     print $data["text"]."<br>";
+    print "です。<br>";
 
     // 変更と削除用のボタンを表示
     // print "<input type = 'button' onClick = 'location.href=\"./../Change/changeItem.html\"' value='更新'>";
