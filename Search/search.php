@@ -59,17 +59,20 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     print "です。<br>";
 
     // 変更と削除用のボタンを表示
-    // print "<input type = 'button' onClick = 'location.href=\"./../Change/changeItem.html\"' value='更新'>";
+
+    // 商品の情報を変更入力ページにPOST
     print "<form action='./../Change/inputForm.php' method='POST'>";
     print "<input type='hidden' name='item' value='". $arr_item["item"] ."'>";
-    print "<input type='hidden' name='id' value ='". $arr_item["id"] ."'><input type='submit' value='変更'>";
+    print "<input type='hidden' name='id' value ='". $arr_item["id"] ."'>";
+    print "<input type='hidden' name='shop' value='". $arr_item["shop"] ."'>";
+    print "<input type='submit' value='変更'>";
     print "</form>";
 
+    // 削除する商品のidを削除用phpにPOST
     print "<form action='./../Delete/deleteItem.php' method='POST'>";
     print "<input type='hidden' name='id' value ='". $arr_item["id"] ."'><input type='submit' value='削除'>";
     print "</form>";
 
-    // print "<input type = 'button' onClick = 'location.href=\"./../Delete/deleteItem.php\"' value='削除'>";
     print "<br>";
 }
  

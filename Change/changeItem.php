@@ -26,7 +26,7 @@ if (empty($_POST)) {
     if (isset($_FILES)) $counter++;
 
     // 要素が不足していたらexit
-    if ($counter < 4) {
+    if ($counter < 5) {
         print "データが不足しています。<br>";
         exit;
     }
@@ -51,8 +51,9 @@ $data = array("name" => $_POST["name"],
               "text" => $_POST["text"]);
 
 // 確認用に表示
+print $_POST["shop"]."<br>";
 print $data["name"]."<br>";
-print $data["price"]."<br>";
+print $data["price"]."円<br>";
 print "<IMG SRC = ".$fn.">"."<br>";
 print $data["text"]."<br>";
 print "です。<br>";
@@ -64,8 +65,9 @@ $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 connect();
 
 // 送られたidの商品を書き換える
-$query = "update " . package . " set item = '" . $json_data . "' where id = ". $_POST["id"];
+$query = "update " . package . " set item = '" . $json_data . "', shop = '". $_POST["shop"] ."' where id = ". $_POST["id"];
 $result = mysqli_query($link, $query);
+print $query;
 
 // 変更されたデータの数
 $count = mysqli_affected_rows($link);
