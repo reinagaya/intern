@@ -51,9 +51,9 @@ print "</datalist><br>";
 print "商品名　<input type='text' name='name' value=". $data["name"] ." required><br>";
 
 // 写真は現在の画像を表示し，変更のない場合は元の値が渡される
-print "<IMG SRC = ".$data["photo"].">"."<br>";
+print "<IMG SRC = ".$data["photo"]." width='200'>"."<br>";
 print "<input type='hidden' name='photo' value='". $data["photo"] ."'>";
-print "画像　　<input type='file' name='photo'><br>";
+print "画像　　<input type='file' name='photo' accept='image/*'><br>";
 
 print "値段　　<input type='number' name='price' value='". $data["price"] ."' required><br>";
 print "<textarea name='text' rows='10' cols='40' maxlength='100'>". $data["text"] ."</textarea><br>";

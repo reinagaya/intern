@@ -38,7 +38,7 @@
           print "</datalist><br>";
         ?>
         商品名　<input type = "text" name = "name" required><br>
-        画像　　<input type = "file" name = "photo" required><br>
+        画像　　<input type = "file" name = "photo" accept='image/*' required><br>
         値段　　<input type = "number" name = "price" required><br>
         <!-- 説明文を入れるためのtextarea 100文字まで -->
         <textarea name = "text" rows = "10" cols = "40" maxlength = "100" placeholder = "説明文"></textarea><br>

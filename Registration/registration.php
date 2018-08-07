@@ -50,7 +50,7 @@ $data = array("name" => $_POST["name"],
 print $_POST["shop"]."<br>";
 print $data["name"]."<br>";
 print $data["price"]."円<br>";
-print "<IMG SRC = ".$fn.">"."<br>";
+print "<IMG SRC = ".$fn." width='200'>"."<br>";
 print $data["text"]."<br>";
 print "です。<br>";
 

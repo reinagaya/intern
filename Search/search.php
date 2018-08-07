@@ -54,7 +54,7 @@ while($arr_item = mysqli_fetch_assoc($result)) {
     print $arr_item["shop"]."<br>";
     print $data["name"]."<br>";
     print $data["price"]."円<br>";
-    print "<IMG SRC = ".$data["photo"].">"."<br>";
+    print "<IMG SRC = ".$data["photo"]." width='200'>"."<br>";
     print $data["text"]."<br>";
     print "です。<br>";
 
